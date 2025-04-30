@@ -21,7 +21,13 @@ const createFunction = async (expressInstance): Promise<void> => {
   app.useGlobalPipes(new ValidationPipe());
   await app.init();
 };
-export const api = functions.https.onRequest(async (request, response) => {
-  await createFunction(expressServer);
+
+createFunction(expressServer);
+
+functions.setGlobalOptions({
+  region: 'europe-central2'
+});
+
+export const api = functions.https.onRequest((request, response) => {
   expressServer(request, response);
 });

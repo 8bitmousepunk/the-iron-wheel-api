@@ -31,9 +31,6 @@ export class CharactersService {
   }
 
   findAll(options?: {compact: boolean}) {
-    console.log('findAll.options');
-    console.log(options);
-
     return this.getCollection(options)
       .get()
       .then((querySnapshot: QuerySnapshot<Character>) => {
