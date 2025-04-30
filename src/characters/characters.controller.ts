@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { CharactersService } from './characters.service';
 import { CreateCharacterDto } from './dto/create-character.dto';
@@ -16,7 +16,10 @@ export class CharactersController {
   }
 
   @Get()
-  findAll() {
+  findAll(@Query('compact') compact: string) {
+    if (typeof compact !== 'undefined') {
+      return this.charactersService.findAll({compact: true});
+    }
     return this.charactersService.findAll();
   }
 

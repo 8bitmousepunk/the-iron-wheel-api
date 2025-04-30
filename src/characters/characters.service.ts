@@ -30,8 +30,11 @@ export class CharactersService {
     });
   }
 
-  findAll() {
-    return this.collection
+  findAll(options?: {compact: boolean}) {
+    console.log('findAll.options');
+    console.log(options);
+
+    return this.getCollection(options)
       .get()
       .then((querySnapshot: QuerySnapshot<Character>) => {
         if(querySnapshot.empty) {
@@ -45,6 +48,19 @@ export class CharactersService {
 
         return characters;
       });
+  }
+
+  getCollection(options?: {compact: boolean}) {
+    if (options?.compact) {
+      return this.getCollectionCompact();
+    } else {
+      return this.collection;
+    }
+  }
+
+  getCollectionCompact() {
+    const compactFields: Array<keyof Character> = ['name', 'playerName', 'imageUrl'];
+    return this.collection.select(...compactFields);
   }
 
   findOne(id: string) {
