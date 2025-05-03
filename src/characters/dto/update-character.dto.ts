@@ -41,4 +41,6 @@ export class UpdateCharacterDto {
     @IsOptional()
     @IsNotEmptyObject()
     skills?: Skills;
+
+    [key: string]: any;
 }

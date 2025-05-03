@@ -70,7 +70,7 @@ export class CharactersService {
   }
 
   async update(id: string, updateCharacterDto: UpdateCharacterDto) {
-    await this.collection.doc(id).set(updateCharacterDto, { merge: true });
+    await this.collection.doc(id).update(updateCharacterDto);
   }
 
   async remove(id: string) {

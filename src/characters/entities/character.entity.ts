@@ -3,6 +3,7 @@ export class Character {
   name: string;
   playerName: string;
   imageUrl?: string;
+  age: number;
   virtue: string;
   vice: string;
   concept: string;

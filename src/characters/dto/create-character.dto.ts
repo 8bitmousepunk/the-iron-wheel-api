@@ -15,6 +15,10 @@ export class CreateCharacterDto {
     imageUrl: string;
 
     @IsNotEmpty()
+    @IsNumber()
+    age: number;
+
+    @IsNotEmpty()
     @IsString()
     virtue: string;
 
