@@ -17,7 +17,7 @@ export class Character {
   size: number;
   speed: number;
   defense: number;
-  armor?: number;
+  armor: Armor;
   initiative: number;
   beats: number;
   experience: number;
@@ -98,3 +98,8 @@ export interface SkillWithSpecification {
 }
 
 export type Skill = SkillWithSpecification | number;
+
+export interface Armor {
+  melee: number;
+  ranged: number;
+}

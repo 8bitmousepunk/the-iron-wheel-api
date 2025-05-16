@@ -22,7 +22,8 @@ export class CharactersService {
       willpower: createCharacterDto.maxWillpower,
       integrity: createCharacterDto.maxIntegrity,
       beats: 0,
-      experience: 0
+      experience: 0,
+      armor: { melee: 0, ranged: 0 }
     }
 
     return this.collection.add(character).then(doc => {

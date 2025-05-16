@@ -1,5 +1,5 @@
 import { IsNumber, IsString, IsArray, IsNotEmptyObject, IsOptional } from 'class-validator';
-import { Merits, Attributes, Skills, HealthPoints } from '../entities/character.entity';
+import { Merits, Attributes, Skills, HealthPoints, Armor } from '../entities/character.entity';
 
 export class UpdateCharacterDto {
     @IsOptional()
@@ -42,5 +42,10 @@ export class UpdateCharacterDto {
     @IsNotEmptyObject()
     skills?: Skills;
 
+    @IsOptional()
+    @IsNotEmptyObject()
+    armor?: Armor;
+
+    // for the nested properties like 'attributes.mental'
     [key: string]: any;
 }
